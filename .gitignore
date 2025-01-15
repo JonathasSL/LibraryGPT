@@ -1,0 +1,67 @@
+## .NET
+# User-specific files
+.idea/
+.vscode/
+.vs/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]evelopment/
+[Dd]ist/
+[Dd]istros/
+[Dd]ebug|Release/
+[Aa]ssets/
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files (for Visual Studio)
+*.psess
+*.vsp
+*.vspscc
+
+# Windows image file
+Thumbs.db
+
+# Windows Installer Log Files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# .NET Core files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET
+# Uncomment if you have an Angular project
+# node_modules/
+# wwwroot/
+
+# JetBrains Rider
+.idea/
+
+# Tye
+.tye/
+
+# Visual Studio for Mac
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NUnit Test Results
+TestResult.xml

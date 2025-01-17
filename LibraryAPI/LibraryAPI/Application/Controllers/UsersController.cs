@@ -1,21 +1,15 @@
-﻿using LibraryAPI.Data;
+﻿using LibraryAPI.Application.Services;
+using LibraryAPI.Infrasctructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace LibraryAPI.Controllers
+namespace LibraryAPI.Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly LibraryContext _context;
-
-        public UsersController(LibraryContext context)
-        {
-            _context = context;
-        }
-
         // GET: api/<UsersController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -46,6 +40,14 @@ namespace LibraryAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        private readonly ApplicationDbContext _context;
+        private IUserService _userService;
+        public UsersController(ApplicationDbContext context, IUserService userService)
+        {
+            _context = context;
+            _userService = userService;
         }
     }
 }

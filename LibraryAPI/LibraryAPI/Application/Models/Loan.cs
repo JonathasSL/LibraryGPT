@@ -1,16 +1,16 @@
-﻿namespace LibraryAPI.Models
+﻿namespace LibraryAPI.Application.Models
 {
-    public class Loan 
+    public class Loan
     {
-        public Guid Id { get; private set; }
-        public DateTime LoanDate { get; private set; }
-        public DateTime? ReturnDate { get; private set; }
-        public DateTime DueDate { get; private set; }
-        public Book Book { get; private set; }
-        public User User { get; private set; }
+        public Guid Id { get; set; }
+        public DateTime LoanDate { get; set; }
+        public DateTime? ReturnDate { get; set; }
+        public DateTime DueDate { get; set; }
+        public Book Book { get; set; }
+        public User User { get; set; }
         public bool IsActive { get { return !ReturnDate.HasValue; } }
 
-
+        /*
         public Loan(Book book, User user, DateTime dueDate)
         {
             Id = Guid.NewGuid();
@@ -28,6 +28,6 @@
             ReturnDate = returnDate ?? DateTime.UtcNow;
             Book.ReturnBook();
         }
-
+        */
     }
 }

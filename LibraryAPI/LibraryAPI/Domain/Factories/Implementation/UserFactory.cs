@@ -1,6 +1,7 @@
-﻿using LibraryAPI.Models;
+﻿using LibraryAPI.Application.Models;
+using LibraryAPI.Domain.Factories;
 
-namespace LibraryAPI.Factories.Implementation
+namespace LibraryAPI.Domain.Factories.Implementation
 {
     public class UserFactory : IFactory<User>
     {
@@ -21,5 +22,6 @@ namespace LibraryAPI.Factories.Implementation
                 Email = _email
             };
         }
+
     }
 }

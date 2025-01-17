@@ -1,17 +1,17 @@
-﻿using LibraryAPI.Data;
+﻿using LibraryAPI.Infrasctructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace LibraryAPI.Controllers
+namespace LibraryAPI.Application.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class LoansController : ControllerBase
     {
-        private readonly LibraryContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public LoansController(LibraryContext context)
+        public LoansController(ApplicationDbContext context)
         {
             _context = context;
         }

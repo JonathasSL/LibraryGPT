@@ -1,4 +1,5 @@
-﻿using LibraryAPI.Domain.Entities;
+﻿using Humanizer;
+using LibraryAPI.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using System.Security.Principal;
@@ -14,7 +15,7 @@ public class ApplicationDbContext : DbContext
 
         foreach (var entityType in entities)
         {
-            var tableName = entityType.Name.Replace("Entity","");
+            var tableName = entityType.Name.Replace("Entity","").Pluralize();
             modelBuilder.Entity(entityType).ToTable(tableName);
             /*
             var method = typeof(ModelBuilder)

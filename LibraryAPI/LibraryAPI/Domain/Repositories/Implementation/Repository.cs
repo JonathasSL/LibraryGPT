@@ -23,7 +23,7 @@ namespace LibraryAPI.Domain.Repositories.Implementation
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet.Where(entity => !entity.RemovedOn.HasValue).ToListAsync();
         }
 
         public async Task<T> AddAsync(T entity)
@@ -33,10 +33,12 @@ namespace LibraryAPI.Domain.Repositories.Implementation
             return entity;
         }
 
-        public async Task Update(T entity)
+        public async Task<T> Update(T entity)
         {
+            entity.LastModifiedDate = DateTime.UtcNow;
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task DeleteAsync(T entity)

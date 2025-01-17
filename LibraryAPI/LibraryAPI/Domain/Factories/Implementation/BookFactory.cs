@@ -1,5 +1,4 @@
 ﻿using LibraryAPI.Application.Models;
-using LibraryAPI.Domain.Factories;
 
 namespace LibraryAPI.Domain.Factories.Implementation
 {

@@ -5,7 +5,10 @@ namespace LibraryAPI.Application.Services
 {
     public interface IBookService
     {
-        Task<BookEntity> CreateCopy(Book model);
-        Task<List<BookEntity>> GetAllBooksAsync();
+        Task<BookEntity> Create(Book model);
+        Task<List<BookEntity>> GetAllAsync();
+        Task<BookEntity> GetById(Guid id);
+        Task<BookEntity> Update(Book book);
+        Task<BookEntity> Delete(Guid id);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using LibraryAPI.Domain.Enumerators;
-using System.Reflection;
 
 namespace LibraryAPI.Domain.Entities
 {
@@ -7,7 +6,7 @@ namespace LibraryAPI.Domain.Entities
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public EnumGenre Genre { get; set; }
+        public BookGenres? Genre { get; set; }
         public bool IsAvailable { get; set; } = true;
         public string CopyId { get; set; }
 

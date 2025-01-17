@@ -18,7 +18,7 @@ namespace LibraryAPI.Application.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBookById([FromRoute]Guid id)
+        public async Task<IActionResult> GetBookById([FromRoute] Guid id)
         {
             return HandleResponse(await _bookService.GetById(id));
         }
@@ -29,6 +29,14 @@ namespace LibraryAPI.Application.Controllers
             return HandleResponse(await _bookService.Create(book));
         }
 
+
+        [HttpPut]
+        public async Task<IActionResult> Update([FromBody] Book book)
+        {
+            return HandleResponse(_bookService.Update(book));
+        }
+        
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {

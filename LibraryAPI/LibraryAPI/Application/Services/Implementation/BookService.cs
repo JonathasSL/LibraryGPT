@@ -1,5 +1,6 @@
 ﻿using LibraryAPI.Application.Models;
 using LibraryAPI.Domain.Entities;
+using LibraryAPI.Domain.Enumerators;
 using LibraryAPI.Domain.Repositories;
 
 namespace LibraryAPI.Application.Services.Implementation
@@ -31,7 +32,7 @@ namespace LibraryAPI.Application.Services.Implementation
             Entity.Title = book.Title;
             Entity.Author = book.Author;
             Entity.CopyId = book.CopyId;
-            //Entity.Genre = book.Genre;
+            Entity.Genre = ParseBookGenres(book.Genre);
 
             return _bookRepository.Update(Entity);
         }
@@ -44,6 +45,14 @@ namespace LibraryAPI.Application.Services.Implementation
             
             await _bookRepository.DeleteAsync(entity);
             return entity;
+        }
+
+        private BookGenres? ParseBookGenres(string bookGenres)
+        {
+            bookGenres = bookGenres.Replace(" ", "");
+            if (!string.IsNullOrWhiteSpace(bookGenres) && Enum.TryParse<BookGenres>(bookGenres, true, out var genre))
+                return genre;
+            return null;
         }
 
         private readonly IBookRepository _bookRepository;

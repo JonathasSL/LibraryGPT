@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryAPI.Domain.Repositories.Implementation
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity<T>
+    public class Repository<T, TId> : IRepository<T> where T : BaseEntity<TId>
     {
         protected readonly ApplicationDbContext _context;
         protected readonly DbSet<T> _dbSet;

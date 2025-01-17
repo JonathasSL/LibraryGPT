@@ -8,7 +8,7 @@ namespace LibraryAPI.Application.Services.Implementation
     {
         public async Task<BookEntity> CreateCopy(Book model)
         {
-            var book = new BookEntity("model.Title", "model.Author", "model.CopyId"); //For testing purpouses
+            var book = new BookEntity(model.Title, model.Author, model.CopyId);
             return _bookRepository.AddAsync(book).Result;
         }
 

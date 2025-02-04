@@ -17,12 +17,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.RegisterAllScopedDependencies(logger);
 
 builder.Services.AddSingleton<LoanManager>();
-//builder.Services.AddTransient<IFactory<Book>, BookFactory>();
-//builder.Services.AddTransient<IFactory<User>, UserFactory>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-    //.LogTo(Console.WriteLine, LogLevel.Information));
 
 var app = builder.Build();
 
@@ -67,8 +64,8 @@ public static class ServiceCollectionExtensions
             {
                 try
                 {
-                    //logger.LogInformation($"[DI] Registrando: {interfaceType}, {implementationType}");
-                    services.AddScoped(interfaceType, implementationType);
+                    logger.LogInformation($"[DI] Registrando: {interfaceType}, {implementationType}");
+                        services.AddScoped(interfaceType, implementationType);
                 }
                 catch (Exception e)
                 {
@@ -81,49 +78,3 @@ public static class ServiceCollectionExtensions
     }
 }
 
-
-/*
-
-//begin manager
-var loanManager = LoanManager.Instance;
-//var logger = new Logger<>();
-
-var user = new User()
-{
-    Name = "João",
-    Email = "joao@example.com"
-};
-
-var book = new Book()
-{
-    Title = "Clean Code",
-    Author = "Rober C. Marting",
-    IsAvailable = true,
-};
-
-var borrowResult = loanManager.BorrowBook(user, book);
-Console.WriteLine(borrowResult);
-
-var borrowAgain = loanManager.BorrowBook(user,book);
-Console.WriteLine(borrowAgain);
-
-var returnResult = loanManager.ReturnBook(book);
-Console.WriteLine(returnResult);
-//End manager
-
-
-//beginFactory
-
-var bookFactory = new BookFactory("Livro de Exemplo", "Autor Exemplo");
-var userFactory = new UserFactory("Nome de exemplo", "Email exemplo");
-
-// Criar um livro usando a fábrica
-var book1 = bookFactory.Create();
-Console.WriteLine($"Livro Criado: {book.Title} - {book.Author}");
-
-// Criar um usuário usando a fábrica
-var user1 = userFactory.Create();
-Console.WriteLine($"Usuário Criado: {user.Name} - {user.Email}");
-
-//EndFactory
-*/
